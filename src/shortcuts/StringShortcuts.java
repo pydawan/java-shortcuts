@@ -215,7 +215,7 @@ public abstract class StringShortcuts {
 		return answer;
 	}
 	
-	public static String leftJust(String string, int width, String fillchar) {
+	public static String ljust(String string, int width, String fillchar) {
 		
 		if (string != null && !string.isEmpty() && width > 0 && fillchar != null && !fillchar.isEmpty() ) {
 		
@@ -227,7 +227,7 @@ public abstract class StringShortcuts {
 		return string;
 	}
 	
-	public static String rightJust(String string, int width, String fillchar) {
+	public static String rjust(String string, int width, String fillchar) {
 		
 		if (string != null && !string.isEmpty() && width > 0 && fillchar != null && !fillchar.isEmpty() ) {
 		
@@ -240,7 +240,26 @@ public abstract class StringShortcuts {
 	}
 	
 	public static String center(String string, int width, String fillchar) {
-		return "";
+		
+		if (string == null || string.isEmpty() )
+			return string;
+		
+		if (width < string.length() )
+			return string;
+		
+		if (fillchar == null || fillchar.isEmpty() )
+			return string;
+		
+		int times = width - string.length();
+		
+		times = Math.round(times / 2);
+			
+		return repeat(fillchar, times) + string + repeat(fillchar, times);
+		
+	}
+	
+	public static String center(String string, int width) {
+		return center(string, width, " ");
 	}
 	
 	public static String swapCase(String string) {
@@ -254,7 +273,6 @@ public abstract class StringShortcuts {
 		
 	}
 	
-	
 	public static String join(String separator, String[] strings) {
 		
 		StringBuilder sb = new StringBuilder();
@@ -266,6 +284,69 @@ public abstract class StringShortcuts {
 		}
 		
 		return sb.toString();
+	}
+	
+	public static String lstrip(String string) {
+		
+		if (string == null)
+			return string;
+		
+		return string.replaceAll("^\\s+", "");
+	}
+
+	public static String rstrip(String string) {
+		
+		if (string == null)
+			return string;
+		
+		return string.replaceAll("\\s+$", "");
+	}
+	
+	public static String zfill(String string, int size) {
+		
+		if (string == null || string.isEmpty() || size < 1)
+			return string;
+		
+		int times = size - string.length();
+		
+		return repeat("0", times) + string;
+	}
+	
+	
+	public static String asciiLowerCase() {
+		return "abcdefghijklmnopqrstuvwxyz";
+	}
+
+	public static String asciiUpperCase() {
+		return "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	}
+
+	public static String asciiLetters() {
+		return asciiLowerCase() + asciiUpperCase();
+	}
+
+	public static String digits() {
+		return "0123456789";
+	}
+
+	public static String hexdigits() {
+		return "0123456789abcdefABCDEF";
+	}
+	
+	public static String octdigits() {
+		return "01234567";
+	}
+
+	public static String punctuation() {
+		return "!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
+	}
+
+	public static String printable() {
+		return "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ \\t\\n\\r\\x0b\\x0c";
+	}
+
+	public static String whitespace() {
+		return "\\t\\n\\x0b\\x0c\\r ";
 	}
 	
 }

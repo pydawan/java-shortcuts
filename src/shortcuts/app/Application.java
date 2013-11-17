@@ -47,9 +47,9 @@ public class Application {
 		
 		$.println($.string.isPalindrome("bab") );
 		
-		$.println($.string.leftJust("THIAGO", 10, "-") );
+		$.println($.string.ljust("THIAGO", 10, "-") );
 		
-		$.println($.string.rightJust("THIAGO", 10, "-") );
+		$.println($.string.rjust("THIAGO", 10, "-") );
 		
 		$.println($.string.swapCase("THIAGO") );
 		
@@ -57,7 +57,17 @@ public class Application {
 		
 		$.println($.random.randomize("THIAGO") );
 		
-		$.println($.random.shuffle("THIAGO") );		
+		$.println($.random.shuffle("THIAGO") );
+		
+		$.println($.string.center("THIAGO", 50, ".") );
+		
+		$.println($.string.lstrip("     THIAGO") );
+		
+		$.println($.string.zfill("1", 10) );
+		
+		$.println($.string.hexdigits() );
+		
+		$.println($.string.printable() );
+		
 	}
-
 }
